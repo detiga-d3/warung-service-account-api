@@ -3,10 +3,14 @@ mod app;
 
 use app::{app, init_tracing};
 use std::env;
+use dotenvy::dotenv;
 use tracing::info;
 
 #[tokio::main]
 async fn main() {
+    // Load environment variables
+    dotenv().ok();
+
     // Init tracing
     init_tracing();
 
