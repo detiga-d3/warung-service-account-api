@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Start docker compose for production
+docker compose up --build -d
