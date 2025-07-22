@@ -1,10 +1,7 @@
-mod handlers;
-mod app;
-
-use app::{app, init_tracing};
-use std::env;
 use dotenvy::dotenv;
+use std::env;
 use tracing::info;
+use warung_service_account_api::app::{init_tracing, router};
 
 #[tokio::main]
 async fn main() {
@@ -15,7 +12,7 @@ async fn main() {
     init_tracing();
 
     // Init app
-    let app = app();
+    let app = router();
 
     // Construct the address
     let host = env::var("APP_HOST").unwrap_or("0.0.0.0".to_string());
