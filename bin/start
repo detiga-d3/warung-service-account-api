@@ -1,4 +1,12 @@
 #!/usr/bin/env bash
 
-# Start docker compose for production
-docker compose up --build -d
+echo "Setting up infrastructure..."
+# Setup infrastructure with docker
+docker compose up -d
+echo "Finished setting up infrastructure!"
+echo
+
+echo "Start watching server..."
+# Start rust server with live reload using watchexec
+watchexec -d 1s -e rs,toml -r cargo run
+
